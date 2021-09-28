@@ -25,7 +25,7 @@ public class SqlSessionBean {
 	         inputStream = Resources.getResourceAsStream(resource);   //리소스 파일 읽어오기
 	      }catch(IOException e) {
 	      
-	      }
+	      }   
 	      sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);   //읽어온 파일로 factory 생성
 	   }
 	   

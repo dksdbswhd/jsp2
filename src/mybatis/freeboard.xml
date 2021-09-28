@@ -5,6 +5,15 @@
 <!-- sql mapper   -->  
 <mapper namespace="freeboard"> <!-- namespace : 일종의 식별역할의 변수 -->
 
+	<select id="getList" resultType="dto.Freeboard" parameterType="java.util.Map">
+		select * from freeboard f order by idx desc limit #{startNo},#{pageSize}
+	</select>
+	<select id="selectByIdx" resultType="dto.Freeboard" parameterType="int">
+			select * from freeboard where idx=#{idx}
+	</select>
+	<select id="getCount" resultType="int">
+			select count(*) from freeboard
+	</select>
 
 </mapper>
 <!-- ${ } : 표현식. 중괄호안에 수식에 대한 연산결과값을 구해서 출력
