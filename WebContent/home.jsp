@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>동아리커뮤니티 :: 자유게시판</title>
+<title>동아리 커뮤니티 :: 자유게시판</title>
 </head>
 <body>
 	<a href="community/listAction.jsp">커뮤니티 게시판</a>
