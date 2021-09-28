@@ -23,7 +23,7 @@
 		<li>작성일</li>
 		</ul>
 	</li>
- 	<c:forEach var="vo" items="${list}"> <!-- vo가 Freeboard타입  blists.getList() 실행-->
+ 	<c:forEach var="vo" items="${blist}"> <!-- vo가 Freeboard타입  blists.getList() 실행-->
 <li>
 <ul  class="row">
 	<li>${vo.idx }</li>

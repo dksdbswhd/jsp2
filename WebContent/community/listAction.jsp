@@ -21,7 +21,7 @@
 	map.put("startNo",startNo);
 	List<Freeboard> list = dao.getList(map);
 	
-	request.setAttribute("list", list);
+	request.setAttribute("blist", list);
 	pageContext.forward("listView.jsp");
 //	out.print(list);
 
