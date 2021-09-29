@@ -42,7 +42,7 @@ ul {
 	color:#1A237E;
 }
 #content{
-	min-height: 50vh;
+	min-height: 40%;
 	
 }
 #content li:first-child {
@@ -113,6 +113,12 @@ span {
         flex-direction: column;
     }
   
+}
+
+pre{
+	font-size: 1.2em;
+	color: blue;
+	padding-bottom: 10px;
 }
 
 /* 글 비밀번호 입력 모달  */

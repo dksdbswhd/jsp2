@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- sql mapper   -->  
+<mapper namespace="comment">
+	<insert id="insert" parameterType="dto.Comment">
+	insert into board_comment(mref,name,password,content,ip)
+	values (#{mref},#{name},#{password},#{content},#{ip})
+	</insert>
+	
+	<select id="getComments" parameterType="int" resultType="dto.Comment">
+	select * from board_comment where mref = #{mref}
+	</select>
+	
+	<update id="updateCountAll">
+	<!-- join 으로 테스트 후 작성. -->
+	</update>
+	<!-- 이 sql 은 freeboard.xml 로 이동해도 됩니다. but 댓글테이블이 있어야 동작하니 여기에 놓고 하겠습니다. -->
+	<update id="updateCommentCnt" parameterType="int">
+	update freeboard set commentCount=commentCount+1 where idx=#{idx}
+	</update>
+
+</mapper>

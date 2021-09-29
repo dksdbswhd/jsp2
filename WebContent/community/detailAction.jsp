@@ -1,3 +1,6 @@
+<%@page import="dto.Comment"%>
+<%@page import="java.util.List"%>
+<%@page import="dao.CommentDao"%>
 <%@page import="dto.Freeboard"%>
 <%@page import="dao.FreeboardDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -8,6 +11,10 @@
 
 	FreeboardDao dao = FreeboardDao.getInstance();
 	Freeboard bean = dao.getOne(idx);
+	
+	CommentDao cdao = CommentDao.getInstance();
+	List<Comment> cmts = cdao.getComments(idx);
+	request.setAttribute("cmtlist", cmts);
 	
 	//bean 객체로 참조하고 있는값은 detailView.jsp 에게 전달하고 브라우저에 출력하도록 합니다.
 	request.setAttribute("bean", bean);

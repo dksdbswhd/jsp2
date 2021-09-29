@@ -59,8 +59,8 @@
 		<hr class="line">
 		<div>
 			<span>댓글</span>
-			<span>commentCount</span>
-			<span>3열</span>
+			<span>[${bean.commentCount}]</span>
+			<span></span>
 		</div>
 		<hr class="line">
 		<ul id="main">
@@ -85,6 +85,20 @@
 					</li>
 				</ul>
 			</li>
+			
+			<c:forEach var="cmt" items="${cmtlist}">
+			<li>
+				<ul>
+					<li>${cmt.name}</li>
+					<li>${cmt.ip}</li>
+					<li>${cmt.wdate}</li>
+				</ul>
+			</li>
+			<li>
+				<pre>${cmt.content}</pre>
+			</li>
+			</c:forEach>
+		
 		</ul>
 	</form>
 </div>
@@ -114,7 +128,7 @@
 	var modal = document.getElementById('myModal');
 	var span = document.getElementsByClassName("close")[0];
 	
-	span.onclick = function() {
+	span.onclick = function() {	//span 요소의 onclick 속성값에 해당하는 함수를 설정합니다.
 		modal.style.display = "none";   //modal 화면에 안보이기   닫기 기능 구현
 	}
 	function deleteOk(){
