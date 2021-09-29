@@ -52,3 +52,7 @@ update freeboard set readCount = readCount +1 where idx=154;
 -- 글 삭제 : 글 비밀번호 1)있을때 2)없을때
 delete from freeboard where idx=151 and password ='1111';
 delete from freeboard where idx=151;
+
+-- 글 비밀번호 체크(로그인 기능에도 참고)
+select * from freeboard f where idx=151 and password ='1212';	-- 잘못된 비밀번호 : 쿼리결과 null
+select * from freeboard f where idx=151 and password ='1111';	-- 옳바른 비밀번호 : 쿼리결과 1개 행 조회

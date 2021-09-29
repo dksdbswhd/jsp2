@@ -12,6 +12,7 @@
 	int pageNo;
 	if(request.getParameter("page")==null) pageNo=1;
 	else pageNo = Integer.parseInt(request.getParameter("page"));   //page=1,2,3,4,.....
+	
 	int pageSize =15;
 	int startNo=(pageNo-1)*pageSize;
 	
@@ -19,6 +20,7 @@
 	map.put("pageSize",pageSize);
 	map.put("startNo",startNo);
 	List<Freeboard> list = dao.getList(map);
+	
 	request.setAttribute("list", list);
 	pageContext.forward("listView.jsp");
 //	out.print(list);

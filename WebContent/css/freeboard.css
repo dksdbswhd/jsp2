@@ -114,3 +114,51 @@ span {
     }
   
 }
+
+/* 글 비밀번호 입력 모달  */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box	, css 반영이 안되면 ctrl+f5 브라우저에서 */
+.modal-content {
+    background-color: #fefefe;
+    margin: 30% auto; /* 15% from the top and centered */
+    padding: 10px;
+    padding-bottom: 20px;
+    /* border: 3px solid#4080bf; */
+    width: 30%; /* Could be more or less, depending on screen size */
+    font-size: 1.1em;
+    border-radius: 2px;
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+input{
+	padding: 7px;
+	border-radius: 4px;
+	border: 2px solid #ccc;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

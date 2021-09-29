@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.taglibs.standard.lang.jstl.test.beans.Factory;
 
 import dto.Freeboard;
 import mybatis.SqlSessionBean;
@@ -57,4 +58,18 @@ public class FreeboardDao {
 		mapper.close();
 	}
 	
+	public int delete(Map<String,Object> map) {
+		SqlSession mapper = sqlFactory.openSession();
+		int n = mapper.delete("delete",map);
+		mapper.commit();
+		mapper.close();
+		return n;
+	}
+	
+	public Freeboard passwordCheck(Map<String,Object> map) {
+		SqlSession mapper = sqlFactory.openSession();
+		Freeboard dto = mapper.selectOne("passwordCheck", map);
+		mapper.close();
+		return dto;
+	}
 }

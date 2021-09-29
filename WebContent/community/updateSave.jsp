@@ -18,5 +18,6 @@
 	dto.setContent(content);
 	FreeboardDao dao = FreeboardDao.getInstance();
 	dao.update(dto);
-	response.sendRedirect("updateAction.jsp?idx="+idx);
+	//response.sendRedirect("updateAction.jsp?update=&idx="+idx);
+	response.sendRedirect("detailAction.jsp?update=&idx="+idx + "&page=1");
 %>

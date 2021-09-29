@@ -25,6 +25,14 @@
 		where idx=#{idx}
 	</update>
 	
+	<delete id="delete" parameterType="java.util.Map"> <!-- 글 비밀번호 확인하고 삭제 -->
+		delete from freeboard where idx=#{idx} and password =#{password}
+	</delete>
+	
+	<select id="passwordCheck" resultType="dto.Freeboard" parameterType="java.util.Map">
+		select * from freeboard f where idx=#{idx} and password =#{password}
+	</select>
+	
 </mapper>
 <!-- ${ } : 표현식. 중괄호안에 수식에 대한 연산결과값을 구해서 출력
      #{ } : 무조건 문자열(' '기호사용)로 중괄호 안의 값을 처리합니다. -->

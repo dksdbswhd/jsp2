@@ -50,7 +50,7 @@
 		</ul>
 	<div style="text-align: center;margin-bottom: 10px;">
 		<a class="button" href="updateAction.jsp?idx=${bean.idx}">수정</a>
-		<a class="button">삭제</a>
+		<a class="button" onclick="deleteSet()">삭제</a>
 		<a class="button" href="listAction.jsp">목록</a>
 	</div>
 	<!-- 메인글 출력 끝 -->
@@ -88,5 +88,56 @@
 		</ul>
 	</form>
 </div>
+<!-- 처음에는 display가 none 이고 안보입니다. -->
+<!-- modal : alert,confirm 메소드 사용 외에 추가적인 정보를 받을 때 사용자가 만드는 입력 상자...-->
+	<div id="myModal" class="modal">
+		<!-- Modal content : 모달 입력창-->
+		<div class="modal-content">
+			<span class="close">&times;</span><br>
+			<div style="padding: 0px 20px;">
+				<b>글비밀번호</b><br>
+				<br>
+				<form action="deleteAction.jsp" method="post" name="frmPassword"
+						onsubmit="return deleteOk()">
+					<input type="hidden" name="idx" value="${bean.idx }"> <!--삭제할 글번호-->
+					<input
+						type="password" name="password" size="10">
+					<input type="submit" value="확인" style="padding: 5px 20px;">
+					<br>
+					<span style="color:red;font-size:0.8em;" id="err"></span>
+				</form>
+			</div>
+		</div>
+	</div>
+<!-- 모달 끝 -->
+<script type="text/javascript">
+	var modal = document.getElementById('myModal');
+	var span = document.getElementsByClassName("close")[0];
+	
+	span.onclick = function() {
+		modal.style.display = "none";   //modal 화면에 안보이기   닫기 기능 구현
+	}
+	function deleteOk(){
+		const yn = confirm('글을 삭제하시겠습니까?');
+		if(yn){
+			//비밀번호 입력되었는지확인.
+			if(document.frmPassword.password.value==""){
+				document.getElementById('err').innerHTML = "비밀번호를 입력하세요.";
+				return false;
+			} else {
+				return true;
+			}
+			
+		}else {
+			modal.style.display = "none"; 
+			return false;
+		}
+	
+	}
+	function deleteSet(){
+		document.getElementById('myModal').style.display='block';		
+	}
+</script>
+
 </body>
 </html>
