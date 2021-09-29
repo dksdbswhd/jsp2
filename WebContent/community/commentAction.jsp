@@ -3,9 +3,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%	
-	request.setCharacterEncoding("UTF-8");
 	int mref;
 	CommentDao dao = CommentDao.getInstance();
+	request.setCharacterEncoding("UTF-8");	//getParmeter 앞에 나와야함.
 	if(request.getParameter("del") != null){	//삭제
 		int cmtidx = Integer.parseInt(request.getParameter("cmtidx"));
 		int idx = Integer.parseInt(request.getParameter("idx"));
