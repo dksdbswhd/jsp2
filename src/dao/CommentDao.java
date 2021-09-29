@@ -9,7 +9,7 @@ import dto.Comment;
 import mybatis.SqlSessionBean;
 
 public class CommentDao {
-   SqlSessionFactory sqlFactory = SqlSessionBean.getSessionFactory();
+   SqlSessionFactory factory = SqlSessionBean.getSessionFactory();
    private static CommentDao dao = new CommentDao();
    private CommentDao() { }
    public static CommentDao getInstance() {
@@ -20,21 +20,21 @@ public class CommentDao {
    public List<Comment> getComments(int mref) {
                            // key(변수명처럼 이해) String, value 는 int
       List<Comment> list = null;
-      SqlSession mapper = sqlFactory.openSession();
+      SqlSession mapper = factory.openSession();
       list = mapper.selectList("getComments", mref);
       mapper.close();
       return list;
    }
    
    public void insert (Comment dto) {
-      SqlSession mapper = sqlFactory.openSession();
+      SqlSession mapper = factory.openSession();
       mapper.insert("comment.insert", dto);   // mapper xml 파일에서 네임스페이스.id 로 첫번째 인자
       mapper.commit();
       mapper.close();
    }
    
-   public void update (int idx) {
-      SqlSession mapper = sqlFactory.openSession();
+   public void updateCommentCnt (int idx) {
+      SqlSession mapper = factory.openSession();
       mapper.update("updateCommentCnt", idx);
       mapper.commit();
       mapper.close();

@@ -56,6 +56,7 @@
 	<!-- 메인글 출력 끝 -->
 	<!-- 댓글 시작 -->
 	<form action="commentAction.jsp" method="post" name="frmCmt">
+	<input type="hidden" name="mref" value="${bean.idx}">
 		<hr class="line">
 		<div>
 			<span>댓글</span>

@@ -53,6 +53,54 @@ update freeboard set readCount = readCount +1 where idx=154;
 delete from freeboard where idx=151 and password ='1111';
 delete from freeboard where idx=151;
 
+select * from freeboard order by idx desc limit 0,15;
 -- 글 비밀번호 체크(로그인 기능에도 참고)
 select * from freeboard f where idx=151 and password ='1212';	-- 잘못된 비밀번호 : 쿼리결과 null
 select * from freeboard f where idx=151 and password ='1111';	-- 옳바른 비밀번호 : 쿼리결과 1개 행 조회
+
+-- 댓글 테이블 : board_comment
+create table board_comment(
+	idx int not null auto_increment,
+	mref int not null,							-- 메인글(부모글)의 idx값
+	name varchar(30) not null,					-- 작성자
+	password varchar(10) not null,				-- 글비밀번호(필요할때만 사용)
+	content varchar(2000) not null,				-- 내용
+	wdate timestamp default current_timestamp,	-- 서버의 현재날짜/시간
+	ip varchar(15) default '127.0.0.1',			-- 접속자 ip
+	primary key(idx),
+	foreign key(mref) references freeboard(idx)
+);
+
+insert into board_comment(mref,name,password,content,ip)
+values(154,'다현','1234','오늘 하루도 무사히','192.168.11.11');
+insert into board_comment(mref,name,password,content,ip)
+values(154,'다현','1234','오늘 하루도 무사히','192.168.11.11');
+insert into board_comment(mref,name,password,content,ip)
+values(154,'다현','1234','오늘 하루도 무사히','192.168.11.11');
+
+insert into board_comment(mref,name,password,content,ip)
+values(147,'다현','1234','오늘 하루도 무사히','192.168.11.11');
+
+-- 1)
+insert into board_comment(mref,name,password,content,ip)
+values(147,'다현','1234','오늘 하루도 무사히','192.168.11.11');
+
+
+-- 댓글 개수(글목록에서 필요)
+select count(*) from board_comment where mref=	154;	-- 154번글의 댓글 갯수 
+select count(*) from board_comment where mref=	147;	-- 172번글의 댓글 갯수 
+select count(*) from board_comment where mref=	100;	-- 100번글의 댓글 갯수(없는것)
+
+-- 2) 댓글 리스트
+select * from board_comment where mref = 154;
+select * from board_comment where mref = 147;
+select * from board_comment where mref = 100;
+
+-- 3) 글목록 실행하는 dao.getList() 보다 앞에서 댓글개수를 update 
+update freeboard set commentCount=(
+select count(*) from board_comment where mref=154) where idx=154;
+update freeboard set commentCount=(
+select count(*) from board_comment where mref=147) where idx=147;
+
+-- 4) 글상세보기에서 댓글 입력 후 저장할 때
+update freeboard set commentCount=commentCount+1 where idx=0;
