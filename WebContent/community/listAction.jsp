@@ -1,3 +1,4 @@
+<%@page import="java.time.LocalDate"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.HashMap"%>
 <%@page import="dto.Freeboard"%>
@@ -21,6 +22,7 @@
 	map.put("startNo",startNo);
 	List<Freeboard> list = dao.getList(map);
 	
+	request.setAttribute("today", LocalDate.now());
 	request.setAttribute("list", list);
 	pageContext.forward("listView.jsp");
 //	out.print(list);
