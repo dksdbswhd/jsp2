@@ -93,6 +93,8 @@
 					<li>${cmt.name}</li>
 					<li>${cmt.ip}</li>
 					<li>${cmt.wdate}</li>
+					<!-- 댓글삭제 : 글비밀번호 확인X, 댓글idx, 메인글idx -->
+					<li><a href="javascript:deleteCmt('${cmt.idx}','${bean.idx}')">삭제</a></li>
 				</ul>
 			</li>
 			<li>
@@ -151,6 +153,16 @@
 	}
 	function deleteSet(){
 		document.getElementById('myModal').style.display='block';		
+	}
+	
+	function deleteCmt(cmtidx,idx) {
+		console.log(cmtidx);console.log(idx);
+		const yn = confirm('댓글 삭제하시겠습니까?');
+		if(yn){
+			location.href='commentAction.jsp?del=&cmtidx=' + cmtidx + "&idx=" + idx;
+		}else {
+			alart('댓글 삭제 취소합니다.');
+		}
 	}
 </script>
 

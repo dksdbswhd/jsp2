@@ -33,11 +33,25 @@ public class CommentDao {
       mapper.close();
    }
    
+   public void delete (int idx) {
+	   SqlSession mapper = factory.openSession();
+	   mapper.delete("comment.delete", idx);   // mapper xml 파일에서 네임스페이스.id 로 첫번째 인자
+	   mapper.commit();
+	   mapper.close();
+   }
+   
    public void updateCommentCnt (int idx) {
       SqlSession mapper = factory.openSession();
       mapper.update("updateCommentCnt", idx);
       mapper.commit();
       mapper.close();
+   }
+   
+   public void updateCountAll (int idx) {
+	   SqlSession mapper = factory.openSession();
+	   mapper.update("updateCountAll", idx);
+	   mapper.commit();
+	   mapper.close();
    }
    
 }

@@ -14,6 +14,7 @@
 	
 	//freeboard 테이블 idx 의 댓글 목록 가져오기
 	CommentDao cdao = CommentDao.getInstance();
+	cdao.updateCountAll(idx);		///댓글 개수 update
 	List<Comment> cmts = cdao.getComments(idx);
 	request.setAttribute("cmtlist", cmts);
 	
